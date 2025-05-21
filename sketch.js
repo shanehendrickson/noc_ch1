@@ -1,27 +1,26 @@
-let x = 100;
-let y = 100;
-let xspeed = 2.5;
-let yspeed = 2;
+let position
+let velocity 
 
 let circleD = 48
 
 function setup() {
   createCanvas(640, 240);
+  position = createVector(100, 100)
+  velocity = createVector(1, 3.3)
 }
 
 function draw() {
   background(0);
+  position.add(velocity)
 
-  x = x + xspeed;
-  y = y + yspeed;
-  if (x > width - (circleD / 2) || x < 0 + (circleD / 2)){
-    xspeed = xspeed * -1
+  if (position.x > width - (circleD / 2) || position.x < 0 + (circleD / 2)){
+    velocity.x = velocity.x * -1
   }
-  if (y > height - (circleD / 2) || y < 0 + (circleD / 2)){
-    yspeed = yspeed * -1
+  if (position.y > height - (circleD / 2) || position.y < 0 + (circleD / 2)){
+    velocity.y = velocity.y * -1
   }
 
   stroke(0)
   fill(127)
-  circle(x, y, circleD)
+  circle(position.x, position.y, circleD)
 }
